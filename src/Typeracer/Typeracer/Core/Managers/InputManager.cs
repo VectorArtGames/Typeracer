@@ -31,25 +31,23 @@ namespace Typeracer.Core.Managers
 
 		public static void InputManagerOnKeyPressed(object sender, ConsoleKeyInfo e)
 		{
-			// Get Quote from Data
-			var data = QuoteData.Quote;
+			var data = QuoteData.Written;
+            switch (e.Key)
+            {
+                case ConsoleKey.Backspace:
+					if (data.Length <= 0) break;
+                    QuoteData.Written = data.Remove(data.Length - 1);
+                    break;
+                default:
+                    QuoteData.Written += e.KeyChar;
+                    break;
+            }
 
-			// Protection agaisnt out of range
-			if (data.Length <= QuoteData.CurrentIndex) return;
-			// Get character in data[index]
-			var inp = data[QuoteData.CurrentIndex];
-
-			// Check if 'inp' matches key character
-			if (e.KeyChar != inp) return;
-
-			// Increment Index by 1
-			QuoteData.CurrentIndex++;
-
-			// Refresh Render
-			MainRender.Render();
+            // Refresh Render
+            MainRender.Render();
 		}
 
 		private static void CallKeyPress(ConsoleKeyInfo key) =>
-			KeyPressed?.Invoke(null, key);
+            KeyPressed?.Invoke(null, key);
 	}
 }

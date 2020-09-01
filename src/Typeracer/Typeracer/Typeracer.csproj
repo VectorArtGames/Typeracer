@@ -45,7 +45,9 @@
   <ItemGroup>
     <Compile Include="Core\Countdown\StartTimer.cs" />
     <Compile Include="Core\Data\QuoteData.cs" />
+    <Compile Include="Core\Extensions\StringMatching.cs" />
     <Compile Include="Core\Managers\InputManager.cs" />
+    <Compile Include="Core\TMath\Calculate.cs" />
     <Compile Include="Core\Render\MainRender.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
